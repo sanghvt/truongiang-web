@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thêm phòng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 80%;
+            padding: 10px;
+            height: 100%; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 8px;
+            margin-left: 32px;
+        }
+
+        .btn:hover {
+            background: #eee;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: 220px;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+    </style>
+<style type="text/css">
+	tr{
+		text-align: center
+	}
+	table {
+		text-align: center
+	}
+</style>
+<link href="/css/style2.css" rel='stylesheet' type='text/css'
+	media="all" />
+</head>
+<h1 style="margin:0; color:rgb(255, 255, 255);background-color: rgb(0, 140, 255);
+        padding: 16px; text-align: center; ">
+    Manage dormitory
+</h1>
+<div class="column"
+     style="background-color:#aaa;
+		 width: 200px;">
+    <button class="btn manage"><a th:href="@{/}" style="size: 30px;
+				color: black">Quản lý ký túc xá</a></button>
+    <button class="btn home"><a th:href="@{/}">Trang chủ</a></button>
+    <button class="btn student"><a th:href="@{/student}">Sinh viên</a></button>
+    <button class="btn room"><a th:href="@{/room}">Phòng</a></button>
+    <button class="btn bill"><a th:href="@{/bill}">Hóa đơn</a></button>
+    <button class="btn service"><a th:href="@{/service}">Dịch vụ</a></button>
+    <button class="btn guest"><a th:href="@{/invite/show}">Khách mời</a></button>
+</div>
+		
+		<h1  style="margin-left: 20px;">Thêm mới phòng</h1>
+		<div style="margin: 40px auto;width:600px ;border: 1px solid black " align="center" >
+	<form th:action="@{/room/add}" th:object="${room}" method="POST">
+         <table cellspacing="8" border="0" style="margin-left: 0">
+             
+             <tr>
+                 <td align="right">Số Phòng:</td>
+                 <td><input type="text" name="roomNumber" th:field="*{roomNumber}"></td>
+             </tr>
+             
+              <tr>
+                 <td align="right">Loại</td>
+	                 <td><input type="radio" name="type" th:field="*{type}" th:value="VIP"><span>VIP</span></td>
+                    <td><input type="radio" name="type" th:field="*{type}" th:value="Normal"><span>Normal</span></td>
+             </tr>
+             
+             <tr>
+                 <td align="right">Giá phòng:</td>
+                 <td><input type="text" name="price" th:field="*{price}"></td> 
+             </tr> 
+             
+             <tr>
+                 <td align="right">Số lượng người ở tối đa:</td>
+                 <td><input type="text" name="capacity" th:field="*{capacity}"></td> 
+             </tr> 
+             
+           	
+           	&nbsp;&nbsp;&nbsp;
+           	<tr style="text-align: center;"> 
+                 <td >
+                    
+                 </td>
+                 <td>
+                 	 <input type="submit" value="Thêm mới">
+                 </td>
+             </tr>
+         </table>
+	</form>
+	</div>
+</body>
+</html>

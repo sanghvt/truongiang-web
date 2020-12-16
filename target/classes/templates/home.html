@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Trang chủ</title>
+<!--<link href="/css/style2.css" rel='stylesheet' type='text/css'-->
+<!--	media="all" />-->
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 80%;
+			padding: 10px;
+			height: 100%; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.btn {
+			border: none;
+			background-color: inherit;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 8px;
+			margin-left: 32px;
+		}
+
+		.btn:hover {
+			background: #eee;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+	</style>
+</head>
+<body>
+<h1 style="margin:0; color:rgb(255, 255, 255);background-color: rgb(0, 140, 255);
+        padding: 16px; text-align: center; ">
+	Manage dormitory
+</h1>
+<div class="column"
+	 style="background-color:#aaa;
+		 width: 200px;">
+	<button class="btn manage"><a th:href="@{/}" style="size: 30px;
+				color: black">Quản lý ký túc xá</a></button>
+	<button class="btn home"><a th:href="@{/}">Trang chủ</a></button>
+	<button class="btn student"><a th:href="@{/student}">Sinh viên</a></button>
+	<button class="btn room"><a th:href="@{/room}">Phòng</a></button>
+	<button class="btn bill"><a th:href="@{/bill}">Hóa đơn</a></button>
+	<button class="btn service"><a th:href="@{/service}">Dịch vụ</a></button>
+	<button class="btn guest"><a th:href="@{/invite/show}">Khách mời</a></button>
+</div>
+		
+		<div style="margin: 50px auto auto 250px; font-size: larger">
+			<h1> Đây là hệ thống quán lý ký túc xá của nhóm bài tập 13, nhóm lớp: 07</h1>
+			</br>
+			<h3> Các sinh viên thực hiện:</h3>
+			<p> Đỗ Trường Giang (Nhóm trưởng): Quản lý sinh viên, thống kê (full stack)</p>
+			<p> Nguyễn Thị Giang: Quản lý phòng, quản lý hóa đơn (full stack)</p>
+			<p> Nguyễn Bích Ngọc: Quản lý khách (full stack)</p>
+			<p> Ninh Thị Thảo: Quản lý dịch vụ (full stack)</p>
+		</div> 
+	
+</body>
+</html>

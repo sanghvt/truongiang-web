@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 80%;
+			padding: 10px;
+			height: 100%; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.btn {
+			border: none;
+			background-color: inherit;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 8px;
+			margin-left: 32px;
+		}
+
+		.btn:hover {
+			background: #eee;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			margin-left: 220px;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+	</style>
+<!--<link href="/css/style2.css" rel='stylesheet' type='text/css'-->
+<!--	media="all" />-->
+</head>
+<body>
+<h1 style="margin:0; color:rgb(255, 255, 255);background-color: rgb(0, 140, 255);
+        padding: 16px; text-align: center; ">
+	Manage dormitory
+</h1>
+<div class="column"
+	 style="background-color:#aaa;
+		 width: 200px;">
+	<button class="btn manage"><a th:href="@{/}" style="size: 30px;
+				color: black">Quản lý ký túc xá</a></button>
+	<button class="btn home"><a th:href="@{/}">Trang chủ</a></button>
+	<button class="btn student"><a th:href="@{/student}">Sinh viên</a></button>
+	<button class="btn room"><a th:href="@{/room}">Phòng</a></button>
+	<button class="btn bill"><a th:href="@{/bill}">Hóa đơn</a></button>
+	<button class="btn service"><a th:href="@{/service}">Dịch vụ</a></button>
+	<button class="btn guest"><a th:href="@{/invite/show}">Khách mời</a></button>
+</div>
+	<div align="center" style="margin: 40px auto">
+	<table cellspacing="4" border="1">
+		<tr>
+			<th>Họ và tên sinh viên: </th>
+			<td align="center"  th:text="${bill.student.name}"></td>
+		</tr>
+		<tr>
+			<th>Mã sinh viên: </th>
+			<td align="center"  th:text="${bill.student.studentCode}"></td>
+		</tr>
+		<tr>
+			<th>Lớp: </th>
+			<td align="center" th:text="${bill.student.className}"></td>
+		</tr>
+		<tr>
+			<th>Phòng: </th>
+			<td align="center" th:text="${bill.student.room.roomNumber}"></td>
+		</tr>
+		<tr>
+			<th>Tiền phòng: </th>
+			<td align="center" th:text="${bill.student.room.price}*1000"></td>
+		</tr>
+		<tr>
+			<th>Danh sách dịch vụ sử dụng : </th>
+			<td>
+				<table cellspacing="0px" border="1px">
+					<tr>
+						<th>Tên dịch vụ</th>
+						<th>Đơn giá</th>
+					</tr>
+					<tr th:each="service: ${bill.services}">
+						<td th:text="${service.name}"></td>
+						<td th:text="${service.price}*1000"></td>
+					</tr>
+					
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<th>Tổng số tiền cần thanh toán: </th>
+			<td align="center" th:text="${bill.totalPrice}*1000"></td>
+		</tr>
+		
+	</table>
+		<button style="margin: 120px auto">
+				<a style="text-decoration: none" th:href="@{/bill}">Về trang chủ</a>
+			</button>
+	</div>
+	
+	
+			
+	
+</body>
+</html>

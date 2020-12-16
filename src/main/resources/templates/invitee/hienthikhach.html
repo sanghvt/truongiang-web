@@ -1,0 +1,143 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<link href="/css/style2.css" rel='stylesheet' type='text/css'-->
+<!--	media="all" />-->
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 80%;
+			padding: 10px;
+			height: 100%; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.btn {
+			border: none;
+			background-color: inherit;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 8px;
+			margin-left: 32px;
+		}
+
+		.btn:hover {
+			background: #eee;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+	</style>
+</head>
+<body>
+<!-- menu -->
+<h1 style="margin:0; color:rgb(255, 255, 255);background-color: rgb(0, 140, 255);
+        padding: 16px; text-align: center; ">
+	Manage dormitory
+</h1>
+<div class="column"
+	 style="background-color:#aaa;
+		 width: 200px;">
+	<button class="btn manage"><a th:href="@{/}" style="size: 30px;
+				color: black">Quản lý ký túc xá</a></button>
+	<button class="btn home"><a th:href="@{/}">Trang chủ</a></button>
+	<button class="btn student"><a th:href="@{/student}">Sinh viên</a></button>
+	<button class="btn room"><a th:href="@{/room}">Phòng</a></button>
+	<button class="btn bill"><a th:href="@{/bill}">Hóa đơn</a></button>
+	<button class="btn service"><a th:href="@{/service}">Dịch vụ</a></button>
+	<button class="btn guest"><a th:href="@{/invite/show}">Khách mời</a></button>
+</div>
+
+	<div class="nameTitle" style="margin-left: 30px;">
+		<h1 style="margin-left: 230px;">Quản Lý Khách Mời</h1>
+	</div>
+
+
+	<div class="table1" style="margin-left: 230px;">
+		<form th:action="@{/invite/thongke}" method="POST">
+			<input type="datetime-local" name="startdate" value="">
+			<input type="datetime-local" name="enddate" value="">
+			<input type="submit" value="thống kê">
+		</form>
+		<br/>
+		<br/>
+		<table>
+			<thead>
+				<th scope="col">id</th>
+				<th scope="col">tên</th>
+				<th scope="col">Chứng Minh Thư</th>
+				<th scope="col">ngày sinh</th>
+				<th scope="col">ngày thăm</th>
+				<th scope="col">
+					<div>
+						<form th:action="@{/invite/search}" method="POST">
+							<input type="search" placeholder="Tìm Kiếm"
+								name="timkiem" id="timkiem" title="nhập tên khách mời muốn tìm kiếm" > <input type="submit" value="Search"
+								>
+						</form>
+					</div>
+				</th>
+				
+			</thead>
+			<tbody>
+
+				<tr th:each="invite: ${invites}">
+					<td align="left"><span th:text="${invite.id}"></td>
+					<td><span th:text="${invite.name}"></td>
+					<td><span th:text="${invite.cmt}"></td>
+					<td><span th:text="${invite.dateOfBirth}"></td>
+					<td><span th:text="${invite.dateInvite}"></td>
+					<td><a th:href="@{/invite/edit(id=${invite.id})}"><img alt="Sửa" src="/images/Edit.png" width="15px" height="15px" title="Sửa"></a></td>
+					<td><a th:href="@{/invite/delete(id=${invite.id})}"><img alt="Xóa" src="/images/delete.png" width="15px" height="15px" title="Xóa"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		</div>
+	<div class="nameAdd">
+	<div style="margin-left: 230px;"><a  th:href="@{/invite}"><button>Thêm Khách Mời</button></a></div>
+	<div style="margin-left: 230px"><a th:href="@{/invite/sort}"><button>sắp xếp</button></a></div>
+	
+	
+	</div>
+	</div>
+
+
+
+</body>
+</html>

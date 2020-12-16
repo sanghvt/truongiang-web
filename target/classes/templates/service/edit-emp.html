@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
+<title>Sửa dịch vụ</title>
+
+<!--<link href="/css/style2.css" rel='stylesheet' type='text/css'-->
+<!--	media="all" />-->
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 80%;
+			padding: 10px;
+			height: 100%; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.btn {
+			border: none;
+			background-color: inherit;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 8px;
+			margin-left: 32px;
+		}
+
+		.btn:hover {
+			background: #eee;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			margin-left: 220px;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+	</style>
+</head>
+<body>
+<h1 style="margin:0; color:rgb(255, 255, 255);background-color: rgb(0, 140, 255);
+        padding: 16px; text-align: center; ">
+	Manage dormitory
+</h1>
+<div class="column"
+	 style="background-color:#aaa;
+		 width: 200px;">
+	<button class="btn manage"><a th:href="@{/}" style="size: 30px;
+				color: black">Quản lý ký túc xá</a></button>
+	<button class="btn home"><a th:href="@{/}">Trang chủ</a></button>
+	<button class="btn student"><a th:href="@{/student}">Sinh viên</a></button>
+	<button class="btn room"><a th:href="@{/room}">Phòng</a></button>
+	<button class="btn bill"><a th:href="@{/bill}">Hóa đơn</a></button>
+	<button class="btn service"><a th:href="@{/service}">Dịch vụ</a></button>
+	<button class="btn guest"><a th:href="@{/invite/show}">Khách mời</a></button>
+</div>
+	<div align="center">
+		<h1>Sửa dịch vụ</h1>
+		<br /> <br /> <br /> <br />
+
+
+		<form th:action="@{/service/add}" th:object="${service}"
+			method="post">
+			<table>
+				<tr>
+					<td>Mã dịch vụ:</td>
+					<td><input type="number" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Tên dịch vụ</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Giá dịch vụ</td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Update</button>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

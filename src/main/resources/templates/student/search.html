@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sinh Viên</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+			float: left;
+			width: 80%;
+			padding: 10px;
+			height: 100%; /* Should be removed. Only for demonstration */
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.btn {
+			border: none;
+			background-color: inherit;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			display: inline-block;
+			margin-top: 8px;
+			margin-left: 32px;
+		}
+
+		.btn:hover {
+			background: #eee;
+		}
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<table cellspacing="8" border="1px">
+			<tr>
+				<th>Mã sinh viên</th>
+				<th>Họ và tên</th>
+				<th>Tên lớp</th>
+				<th>Số chứng minh thư</th>
+				<th>Quê quán</th>
+				<th>Phòng ở</th>
+				<th></th>
+			</tr>
+			
+			<tr th:each="student: ${students}">		
+  					<td align="right"><span th:text="${student.studentCode}"></span></td>
+					<td align="right"><span th:text="${student.name}"></span></td>
+					<td align="right"><span th:text="${student.className}"></span></td>
+					<td align="right"><span th:text="${student.cmt}"></span></td>
+					<td align="right"><span th:text="${student.homeTown}"></span></td>
+					<td align="right"><span th:text="${student.room.roomNumber}"></span></td>
+					<td align="center">
+						<button>
+							<a th:href="@{edit(id=${student.id})}">Edit</a>
+						</button>
+							
+							&nbsp;&nbsp;&nbsp;&nbsp; 
+						<button>
+							<a th:href="@{delete(id=${student.id})}">Delete</a>
+						</button>	
+					</td>
+						
+			</tr>
+		</table>
+	</div>
+		</br>
+		</br>
+		</br>
+		</br>
+		</br>
+		</br>
+	<div>
+		<a th:href="@{/student}"> <button>Return home</button></a></td>
+	</div>
+</body>
+</html>
